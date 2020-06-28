@@ -1,3 +1,4 @@
+from pages import main_page
 from pages.main_page import MainPage
 from pages.base_page import BasePage
 
