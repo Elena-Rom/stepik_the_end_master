@@ -14,3 +14,7 @@ class LoginPageLocators():
     CSS_REGISTR_INPUT_PASS1 = (By.CSS_SELECTOR, 'input[name="registration-password1"]')
     CSS_REGISTR_INPUT_PASS2 = (By.CSS_SELECTOR,'input[name="registration-password2"]')
     CSS_REGISTR_BUTTON = (By.CSS_SELECTOR, 'button[name="registration_submit"]')
+
+class LocatorsPageProduct:
+     CSS_OPEN_BASKET = 'div.basket-mini a.btn-default'
+     CSS_ADD_TO_BASKET = 'button.btn-add-to-basket'
