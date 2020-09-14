@@ -10,7 +10,11 @@ class TestToBasket(Page_Object):
         page.open()  # открываем страницу
         basket = Page_Object(browser)
         basket.add_book_to_basket()
+        basket.solve_quiz_and_get_code()
         basket.open_to_basket()
-        base = BasePage(browser)
-        base.solve_quiz_and_get_code()
+        bookToCompare = basket.find_book_name()
+        priceToCompare = basket.find_book_price()
+        assert bookToCompare
+        assert priceToCompare
+
 
