@@ -8,7 +8,7 @@ class TestToBasket(Page_Object):
         link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear"
         page = MainPage(browser, link)  # инициализируем Page Object, передаем в конструктор экземпляр драйвера и url адрес
         page.open()  # открываем страницу
-        basket = Page_Object(browser)
+        basket = Page_Object(browser,link)
         basket.add_book_to_basket()
         basket.solve_quiz_and_get_code()
         basket.open_to_basket()
