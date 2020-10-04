@@ -1,17 +1,17 @@
-from telnetlib import EC
-
-from selenium.common.exceptions import NoSuchElementException, TimeoutException
-from selenium.common.exceptions import NoAlertPresentException
 import math
+from telnetlib import EC
 from selenium import webdriver
-from selenium.webdriver.support.wait import WebDriverWait
+from selenium.common.exceptions import NoSuchElementException, TimeoutException, NoAlertPresentException
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from .locators import BasePageLocators
 
 
 class BasePage():
     def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
-        self.browser.implicitly_wait(timeout)
+        self.browser.implicitly_wait(timeout) # неявное ожидание
         self.browser = webdriver.Chrome()
 
     def open(self):
@@ -54,5 +54,23 @@ class BasePage():
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+    def go_to_login_page(self):
+        self.browser.find_element(BasePageLocators.CSS_LOGIN_LINK).click()
+
+    def go_to_basket_page(self):
+        self.browser.find_element(BasePageLocators.CSS_BASKET_BUTTON_EN_GB).click()
+
+    def should_be_login_link(self):
+        if self.is_element_present(*BasePageLocators.CSS_LOGIN_LINK):
+            return True
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.CSS_USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"
+
+
+
+
 
 
